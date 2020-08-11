@@ -5,6 +5,18 @@
     <title>你好啊</title>
 </head>
 <body>
-
+<h1>打开页面成功</h1>
+<!--测试ID\CLASS\以及th:text属性 -->
+<div  id="abo" class="abokkjlj" th:id="${id}" th:class="${class}" th:text="${say}"></div>
+<hr/>
+<!--测试转义-->
+<div th:text="${hello}">不转义</div>
+<div th:utext="${hello}">转义</div>
+<hr/>
+<!--测试便利的两种写法-->
+<h4 th:text="${name}" th:each="name:${users}"></h4>
+<span >
+    <h4 th:each="user:${users}">[[${user}]]</h4>
+</span>
 </body>
 </html>
