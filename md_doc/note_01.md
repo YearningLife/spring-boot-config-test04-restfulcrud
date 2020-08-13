@@ -4,3 +4,4 @@
 ### 3.  org.springframework.boot.autoconfigure.web 中包含了web中各种自动配置场景
 #### 3.1 以后需要仔细去了解，现在记不住
 ### 4. 自动配置先扫描用户配置的，如果没有再采用springboot默认配置
+### 5.复习SPRING MVC内容

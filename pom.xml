@@ -29,6 +29,12 @@
             <artifactId>jquery</artifactId>
             <version>3.5.1</version>
         </dependency>
+        <!--引入jQuery的webjars-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>4.5.0</version>
+        </dependency>
         <!--页面模板-->
         <!--在EnableConfigurationProperties 查看 ThymeleafProperties中的属性 -->
         <dependency>
