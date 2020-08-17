@@ -1,9 +1,12 @@
 package com.green.springboot.config;
 
+import com.green.springboot.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 /*
     1.此处实现WebMvcConfigurerAdapter的父类 WebMvcConfigurer
  */
@@ -22,11 +25,18 @@ public class MvcConfig01 implements WebMvcConfigurer {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/").setViewName("login");
-                registry.addViewController("/index").setViewName("login");
+                registry.addViewController("/index.html").setViewName("login");
+                registry.addViewController("/login.html").setViewName("login");
             }
 
         };
         return mvcConfigurer;
+    }
+  @Bean
+    public LocaleResolver localeResolver(){
+
+
+        return new MyLocaleResolver();
     }
 
 }
