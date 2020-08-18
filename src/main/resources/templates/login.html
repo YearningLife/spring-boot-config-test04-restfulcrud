@@ -11,15 +11,20 @@
 		<!-- Custom styles for this template -->
 		<link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
 	</head>
-
+<!--	页面编辑时，注意以下几个方面-->
+<!--	1. 用户名/密码 字段-->
+<!--	2. form表单请求时，要注意：post，action-->
+<!--	3. 页面报错时，加入判断条件-->
 	<body class="text-center">
-		<form class="form-signin" action="dashboard.html">
+		<form class="form-signin" th:action="@{/user/login}" method="post" action="dashboard.html">
 			<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72">
 			<h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+	<!--账号/密码输入错误，柜面提示报错-->
+			<p th:text="${msg}" style="color: red" th:if="${not #strings.isEmpty(msg)}"/>
 			<label class="sr-only">Username</label>
-			<input type="text" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
+			<input type="text" class="form-control" name="username" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
 			<label class="sr-only">Password</label>
-			<input type="password" class="form-control" placeholder="Password" th:placeholder="#{login.pwd}" required="">
+			<input type="password" class="form-control" name="password" placeholder="Password" th:placeholder="#{login.pwd}" required="">
 			<div class="checkbox mb-3">
 				<label>
           <input type="checkbox" value="remember-me" /> [[#{login.remember}]]
