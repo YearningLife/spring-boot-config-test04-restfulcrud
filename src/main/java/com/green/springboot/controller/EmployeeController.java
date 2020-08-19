@@ -1,6 +1,8 @@
 package com.green.springboot.controller;
 
+import com.green.springboot.dao.DepartmentDao;
 import com.green.springboot.dao.EmployeeDao;
+import com.green.springboot.entities.Department;
 import com.green.springboot.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,16 @@ public class EmployeeController {
     public String allEmployee(Model model) {
         Collection<Employee> empl = employeeDao.getAll();
         model.addAttribute("emps",empl);
-        return "/emp/list";
+        return "emp/list";
+    }
+    @Autowired
+    private DepartmentDao departmentDao;
+
+
+    @GetMapping(value = "/emp")
+    public String addEmployeePage(Model model) {
+        Collection<Department> daoDepartments = departmentDao.getDepartments();
+        model.addAttribute("departs",daoDepartments);
+        return "emp/add";
     }
 }
