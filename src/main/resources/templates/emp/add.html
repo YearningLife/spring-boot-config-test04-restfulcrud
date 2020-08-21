@@ -50,35 +50,36 @@
 				<!-- 引入sidebar-->
 				<div th:replace="components/bar :: #sidely(activeUrl='emps')" ></div>
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<form>
+					<form th:action="@{/emp}" method="post">
 						<div class="form-group">
 							<label >id</label>
-							<input type="text" class="form-control" th：name="${id}}" placeholder="请输入员工ID">
+							<input type="text" class="form-control" name="id" placeholder="请输入员工ID">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">姓名</label>
-							<input type="text" class="form-control" th:name="${lastName}" placeholder="请输入员工姓名">
+							<input type="text" class="form-control" name="lastName" placeholder="请输入员工姓名">
 						</div>
 						<div class="form-group">
 							<label >Email address</label>
-							<input type="email" class="form-control " th:name="${email}" placeholder="请输入员工邮箱">
+							<input type="email" class="form-control " name="email" placeholder="请输入员工邮箱">
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="blankRadio" th:name="${gender}" value="0" aria-label="...">男
+								<input type="radio"   name="gender" value="0" aria-label="...">男
 							</label>
 							<label>
-								<input type="radio" name="blankRadio" th:name="${gender}" value="1" aria-label="...">女
+								<input type="radio"   name="gender" value="1" aria-label="...">女
 							</label>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">生日</label>
-							<input type="date" class="form-control col-sm-2" th:name="${birth}" id="exampleInputPassword2" placeholder="请输入生日">
+							<!--日期点击提交时，存在问题，待确认 name="birth"   -->
+							<input  class="form-control col-sm-2"   placeholder="请输入生日">
 						</div>
 						<div >
 							<label for="exampleInputPassword1">部门</label>
-							<select  class="form-control col-3">
-								<option th:each="dep:${departs}" th:text="${dep.departmentName}" th:name="epartment.departmentName" th:value="${dep.id}">1</option>
+							<select  class="form-control col-3" name="department.id">
+								<option th:each="dep:${departs}" th:text="${dep.departmentName}" th:value="${dep.id}">1</option>
 							</select>
 						</div>
 						<hr/>

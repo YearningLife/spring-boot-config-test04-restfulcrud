@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
 /*
@@ -29,11 +30,21 @@ public class EmployeeController {
     @Autowired
     private DepartmentDao departmentDao;
 
-
+    //页面下拉菜单展示
     @GetMapping(value = "/emp")
     public String addEmployeePage(Model model) {
         Collection<Department> daoDepartments = departmentDao.getDepartments();
         model.addAttribute("departs",daoDepartments);
         return "emp/add";
+    }
+
+    /*
+    用来存储页面数据
+     */
+    @PostMapping(value = "/emp")
+    public String saveEmployee(Employee employee) {
+        System.out.println(".............."+employee);
+        employeeDao.save(employee);
+        return "redirect:/emps";
     }
 }
